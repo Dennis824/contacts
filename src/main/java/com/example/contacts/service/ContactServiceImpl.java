@@ -1,5 +1,6 @@
 package com.example.contacts.service;
 
+import com.example.contacts.exception.ContactNotFoundException;
 import com.example.contacts.pojo.Contact;
 import com.example.contacts.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 
+
 @Service
-public class ContactServiceImpl implements ContactService{
+public class ContactServiceImpl implements ContactService {
 
     @Autowired
     private ContactRepository contactRepository;
@@ -26,16 +28,6 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public void updateContact(String id, Contact contact) {
-        contactRepository.updateContact(findIndexById(id), contact);
-    }
-
-    @Override
-    public void deleteContact(String id) {
-        contactRepository.deleteContact(findIndexById(id));
-    }
-
-    @Override
     public List<Contact> getContacts() {
         return contactRepository.getContacts();
     }
@@ -45,7 +37,7 @@ public class ContactServiceImpl implements ContactService{
         return IntStream.range(0, contactRepository.getContacts().size())
                 .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(() -> new ContactNotFoundException(id));
     }
 
 }
