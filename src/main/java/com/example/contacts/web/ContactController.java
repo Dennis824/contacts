@@ -8,6 +8,7 @@ import com.example.contacts.exception.ErrorResponse;
 import com.example.contacts.pojo.Contact;
 import com.example.contacts.service.ContactService;
 //import jakarta.validation.Valid;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +26,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 @Tag(name = "Contact Controller", description = "Create and retrieve contacts")
 @RestController
