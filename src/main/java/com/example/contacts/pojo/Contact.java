@@ -2,7 +2,7 @@ package com.example.contacts.pojo;
 
 import jakarta.validation.constraints.NotBlank;
 
-//import javax.validation.constraints.NotBlank;
+
 import java.util.UUID;
 
 public class Contact {
